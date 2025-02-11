@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Product({ product, addToCart }) { // 🔹 Renamed prop to addToCart
+function Product({ product, addToCart }) {
     console.log(product);
     
     return (
@@ -23,7 +23,7 @@ function Product({ product, addToCart }) { // 🔹 Renamed prop to addToCart
                     fontSize: '14px',
                     marginTop: '10px'
                 }}
-                onClick={() => addToCart(product)} // 🔹 Corrected function name
+                onClick={() => addToCart(product)} 
             >
                 Add to Cart
             </button>

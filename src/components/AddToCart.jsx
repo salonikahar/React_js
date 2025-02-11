@@ -1,7 +1,6 @@
 import React from 'react';
 
 function AddToCart({ cart, dispatch }) {
-    // 🛒 Calculate total price using reduce()
     const totalPrice = cart.reduce((total, item) => total + item.price, 0);
 
     return (
@@ -32,7 +31,6 @@ function AddToCart({ cart, dispatch }) {
                         ))}
                     </ul>
 
-                    {/* 🛒 Display total price */}
                     <h3>Total Price: ${totalPrice.toFixed(2)}</h3>
                 </>
             ) : (
