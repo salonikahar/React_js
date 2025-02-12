@@ -10,7 +10,7 @@ function Product({ product, addToCart }) {
                 alt={product.name}
                 style={{ width: '100%', height: 'auto', borderRadius: '5px' }}
             />
-            <h5 style={{ margin: '10px 0', fontSize: '16px', color: '#333' }}>{product.name}</h5>
+            <h5 style={{ margin: '10px 0', fontSize: '16px', color: '#fff' }}>{product.name}</h5>
             <h6 style={{ margin: '5px 0', fontSize: '14px', color: '#666' }}>${product.price}</h6>
             <button
                 style={{

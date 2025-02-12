@@ -20,19 +20,47 @@ function App() {
   ];
 
   const addToCart = (product) => {
-    setCart([...cart, product]);
-  };
+    setCart((prevCart) => {
+        const existItem = prevCart.find((i) => i.id === product.id);
+        if (existItem) {
+            return prevCart.map((i) =>
+                i.id === product.id ? { ...i, quantity: i.quantity + 1 } : i
+            );
+        }
+        return [...prevCart, { ...product, quantity: 1 }];
+    });
+};
+
+const onRemove = (productId) => {
+  setCartItem((e) => {
+    return e
+      .map((i) => {
+        if (i.id === productId) {
+          return { ...i, quantity: i.quantity - 1 };
+        }
+        return i;
+      })
+      .filter((i) => i.quantity > 0); 
+  });
+};
+
+const onDelete = (productId) => {
+    setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
+};
+
+
+  
 
   return (
     <div style={{ padding: '20px' }}>
       <h2>Products</h2>
       <div style={{ display: 'flex', gap: '20px', justifyContent: 'center', flexWrap: 'wrap' }}>
         {products.map((product) => (
-          <Product key={product.id} product={product} addToCart={addToCart} /> 
+          <Product key={product.id} product={product} addToCart={addToCart} />
         ))}
       </div>
 
-      <AddToCart cart={cart} />
+      <AddToCart cart={cart} onRemove={onRemove} onDelete={onDelete}/>
     </div>
   );
 }
