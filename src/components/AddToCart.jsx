@@ -37,15 +37,14 @@ function AddToCart({ cart, onAdd, onRemove, onDelete }) {
                                         style={{
                                             backgroundColor: item.quantity === 1 ? '#ccc' : '#dc3545',
                                             color: '#fff',
-                                            padding: '5px 10px',
+                                            padding: '5px 11px',
                                             border: 'none',
                                             borderRadius: '5px',
-                                            cursor: item.quantity === 1 ? 'not-allowed' : 'pointer',
+                                            cursor: 'pointer',
                                             fontSize: '14px',
                                             marginRight: '10px'
                                         }}
                                         onClick={() => onRemove(item.id)}
-                                        disabled={item.quantity === 1}
                                     >
                                         -
                                     </button>

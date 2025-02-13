@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import Product from './components/Product';
 import AddToCart from './components/AddToCart';
+import Header from './components/Header';
 
 import productImage1 from './assets/images/about-product-1_x500.png';
 import productImage2 from './assets/images/about-product-2_x500.png';
 import productImage3 from './assets/images/about-product-3_x500.png';
 import productImage4 from './assets/images/about-product-4_x500.png';
+import productImage5 from './assets/images/about-product-5_x500.png';
+import productImage6 from './assets/images/about-product-6_x500.png';
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -15,44 +18,59 @@ function App() {
     { id: 2, name: "Product 2", price: 15, image: productImage2 },
     { id: 3, name: "Product 3", price: 20, image: productImage3 },
     { id: 4, name: "Product 4", price: 20, image: productImage4 },
-    { id: 5, name: "Product 5", price: 20, image: productImage3 },
-    { id: 6, name: "Product 6", price: 20, image: productImage3 }
+    { id: 5, name: "Product 5", price: 20, image: productImage5 },
+    { id: 6, name: "Product 6", price: 20, image: productImage6 }
   ];
 
   const addToCart = (product) => {
     setCart((prevCart) => {
-        const existItem = prevCart.find((i) => i.id === product.id);
-        if (existItem) {
-            return prevCart.map((i) =>
-                i.id === product.id ? { ...i, quantity: i.quantity + 1 } : i
-            );
-        }
-        return [...prevCart, { ...product, quantity: 1 }];
+      const existItem = prevCart.find((i) => i.id === product.id);
+      if (existItem) {
+        return prevCart.map((i) =>
+          i.id === product.id ? { ...i, quantity: i.quantity + 1 } : i
+        );
+      }
+      return [...prevCart, { ...product, quantity: 1 }];
     });
-};
+  };
 
-const onRemove = (productId) => {
-  setCartItem((e) => {
-    return e
-      .map((i) => {
-        if (i.id === productId) {
-          return { ...i, quantity: i.quantity - 1 };
-        }
-        return i;
-      })
-      .filter((i) => i.quantity > 0); 
-  });
-};
+  const onAdd = (product) => {
+    setCart((prevCart) => {
+      const existItem = prevCart.find((i) => i.id === product.id);
+      if (existItem) {
+        return prevCart.map((i) =>
+          i.id === product.id ? { ...i, quantity: i.quantity + 1 } : i
+        );
+      }
+      return [...prevCart, { ...product, quantity: 1 }];
+    });
+  };
 
-const onDelete = (productId) => {
+  const onRemove = (product) => {
+    setCart((prevCart) => {
+      return prevCart
+        .map((item) => {
+          if (item.id === product) {
+            return {...item, quantity: item.quantity - 1};
+          }
+          return item;
+        })
+        .filter((i) => i.quantity > 0);
+    });
+  };
+
+  const onDelete = (productId) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
-};
+  };
+
+const nav = cart.reduce((total, item) => total + item.quantity, 0);
 
 
-  
+
 
   return (
-    <div style={{ padding: '20px' }}>
+    <div>
+      <Header nav={nav}/>
       <h2>Products</h2>
       <div style={{ display: 'flex', gap: '20px', justifyContent: 'center', flexWrap: 'wrap' }}>
         {products.map((product) => (
@@ -60,7 +78,8 @@ const onDelete = (productId) => {
         ))}
       </div>
 
-      <AddToCart cart={cart} onRemove={onRemove} onDelete={onDelete}/>
+      <AddToCart cart={cart} onRemove={onRemove} onDelete={onDelete} onAdd={onAdd} />
+      
     </div>
   );
 }
