@@ -11,10 +11,8 @@ function Header({nav}) {
             color: 'white' ,
             margin : '0',
         }}>
-            {/* Brand Name */}
             <h2 style={{ margin: 0, fontSize: '24px' }}>My Store</h2>
 
-            {/* Navigation Links */}
             <div>
                 <a href="/cart" style={{ color: 'white', textDecoration: 'none', margin: '0 15px', fontSize: '18px', position: 'relative' }}>
                     🛒

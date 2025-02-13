@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Footer({ foot }) {
+function Footer() {
   return (
     <footer style={{ backgroundColor: '#333', color: 'white', padding: '2px', marginTop: '40px' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto', textAlign: 'center' }}>
