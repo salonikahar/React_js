@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import Product from './components/Product';
-import AddToCart from './components/AddToCart';
-import Header from './components/Header';
-import Footer from './components/footer';
+import Product from '../components/Product';
+import AddToCart from '../components/AddToCart';
+import Header from '../components/Header';
+import Footer from '../components/footer';
 
 import productImage1 from './assets/images/about-product-1_x500.png';
 import productImage2 from './assets/images/about-product-2_x500.png';
