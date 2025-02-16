@@ -121,7 +121,3 @@ The application uses React `useState` to manage the cart state.
      </button>
      ```
 
-## License
-This project is licensed under the MIT License.
-
-
