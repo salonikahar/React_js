@@ -81,6 +81,7 @@ const nav = cart.reduce((total, item) => total + item.quantity, 0);
 
       <AddToCart cart={cart} onRemove={onRemove} onDelete={onDelete} onAdd={onAdd} />
 
+
       <Footer />
       
     </div>
