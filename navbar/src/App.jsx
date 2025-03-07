@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Home from './components/home';
 import TodoList from './components/TodoList';
 import UserProfile from './components/UserProfile';
+import Counter from './components/counter';
 
 
 // globaly declare theme color
@@ -51,6 +52,7 @@ function App() {
         {activeTab === "home" && <Home theme={theme}/> }
         {activeTab === "todos" && <TodoList theme={theme}/> }
         {activeTab === "profile" && <UserProfile theme={theme}/> }
+        {activeTab === "counter" && <Counter theme={theme}/> }
         
       </main>
 

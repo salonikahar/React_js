@@ -113,7 +113,6 @@ function TodoList({ theme }) {
                                 style={{
                                     ...styles.todoText,
                                     textDecoration: todo.completed ? "line-through" : "none",
-                                    color: todo.completed ? "#fff" : "black",
                                 }}
                             >
                                 {todo.text}

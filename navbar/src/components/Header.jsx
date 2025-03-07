@@ -69,8 +69,8 @@ function Header({ activeTab, setActiveTab, theme, toggleTheme }) {
           <div className="toggleThemeButton">
             <button
               onClick={toggleTheme}
-              style={{
-                background: "#555",
+              style={{ 
+                backgroundColor: theme === 'light' ? "#fff" :"#555" ,
                 color: "#fff",
                 border: "none",
                 padding: "8px 15px",
