@@ -1,22 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const UserProfile = ({ theme }) => {
-    const [profile, setProfile] = useState({
-        name: "User1",
-        email: "user@gmail.com",
-        bio: "React developer.",
-        theme: "light",
-        notification: true,
+    const [profile, setProfile] = useState(() => {
+        const storedProfile = localStorage.getItem('profile');
+
+        return storedProfile
+            ? JSON.parse(storedProfile)
+            : {
+                name: "User1",
+                email: "user@gmail.com",
+                bio: "React developer.",
+                theme: "light",
+                notification: true,
+            }
     });
 
     const [isEditing, setIsEditing] = useState(false);
     const [formData, setFormData] = useState({ ...profile });
 
+    useEffect(() => {
+        localStorage.setItem("userProfile",JSON.stringify(profile));
+    },[profile]);
+
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
         setFormData({
             ...formData,
-            [name]: type === "checkbox" ? checked : value, // Fixed "checkedbox" typo
+            [name]: type === "checkbox" ? checked : value,
         });
     };
 
@@ -67,7 +77,7 @@ const UserProfile = ({ theme }) => {
     return (
         <div style={styles.container}>
             <div style={styles.profileBox}>
-                
+
                 {!isEditing ? (
                     <div>
                         <h3>{profile.name}</h3>

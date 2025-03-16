@@ -1,88 +1,3 @@
-// import React, { useState } from 'react';
-
-// function BothForm() {
-//     // controlled
-//     const [isControlled, setIsControlled] = useState(true);
-
-//     const [formData, setFormData] = useState({
-//         name: "",
-//         email: "",
-//         passcode: "",
-//         age: "",
-//         gender: "",
-//         bio: "",
-//         hobbies: [],
-//         country: "India",
-//         terms: false,
-//     });
-
-//     const handleChange = (e) => {
-//         const { name, value, type, checked } = e.target;
-//         setFormData((prev) => ({
-//             ...prev,
-//             [name]:
-//                 type === "checkbox" && name !== "terms"
-//                     ? checked
-//                         ? [...prev.hobbies, value]
-//                         : prev.hobbies.filter((hobby) => hobby !== value)
-//                     : type === "checkbox"
-//                         ? checked
-//                         : value,
-//         }));
-//     };
-
-//     const handleSubmit = (e) => {
-//         e.preventDefault();
-//         if (isControlled) {
-//             console.log("Form submitted:", formData);
-//         }
-//     };
-
-//     const handleToggle = () => {
-//         setIsControlled(!isControlled);
-//     };
-
-//     return (
-//         <>
-//             <h1>{isControlled ? "Controlled" : "Uncontrolled"}</h1>
-//             <label>
-//                 <input type="checkbox" checked={isControlled} onChange={handleToggle} />
-//                 Toggle Form Control
-//             </label>
-
-//             <form onSubmit={handleSubmit}>
-//                 <label>Name: </label>
-//                 {isControlled ? (
-//                     <input
-//                         type="text"
-//                         name="name"
-//                         value={formData.name} // Controlled input
-//                         onChange={handleChange} // Now it updates state
-//                     />
-//                 ) : (
-//                     <input type="text" />
-//                 )}
-
-//                 <label>Email : </label>
-//                 {isControlled ? (
-//                     <input
-//                         type="email"
-//                         name="email"
-//                         value={formData.email} 
-//                         onChange={handleChange} 
-//                     />
-//                 ) : (
-//                     <input type="email" />
-//                 )}
-
-//                 <button type="submit">Submit</button>
-//             </form>
-//         </>
-//     );
-// }
-
-// export default BothForm;
-
 import React, { useState } from 'react';
 
 function BothForm() {
@@ -95,7 +10,6 @@ function BothForm() {
         password: "",
         age: "",
         gender: "",
-        bio: "",
         hobbies: [],
         country: "India",
         terms: false,
@@ -112,91 +26,116 @@ function BothForm() {
                         : prev.hobbies.filter((hobby) => hobby !== value)
                     : type === "checkbox"
                         ? checked
-                        : type === "radio"  // ✅ Handle radio buttons
+                        : type === "radio"
                             ? value
                             : value,
         }));
     };
 
-
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (!formData.terms) {
+            alert("You must agree to the terms and conditions.");
+            return;
+        }
         if (isControlled) {
             console.log("Form submitted:", formData);
         }
+        
     };
 
     const handleToggle = () => {
         setIsControlled(!isControlled);
     };
 
-    return (
-        <div style={{ maxWidth: "400px", margin: "auto", padding: "20px", border: "1px solid #ccc", borderRadius: "8px", boxShadow: "2px 2px 12px rgba(0,0,0,0.1)", fontFamily: "Arial, sans-serif" }}>
-            <h1 style={{ textAlign: "center", color: "#333" }}>
-                {isControlled ? "Controlled" : "Uncontrolled"} Form
-            </h1>
+    const styles = {
+        container: {
+            width: '550px',
+            margin: 'auto',
+            padding: '20px',
+            border: '1px solid #ccc',
+            borderRadius: '8px',
+            boxShadow: '2px 2px 12px rgba(0,0,0,0.1)',
+            fontFamily: 'Arial, sans-serif'
+        },
+        heading: {
+            textAlign: 'center',
+            color: '#333'
+        },
+        form: {
+            display: 'flex',
+            flexDirection: 'column'
+        },
+        label: {
+            marginBottom: '5px',
+            fontWeight: 'bold'
+        },
+        input: {
+            padding: '8px',
+            marginBottom: '15px',
+            borderRadius: '4px',
+            border: '1px solid #ccc'
+        },
+        button: {
+            backgroundColor: '#007BFF',
+            color: 'white',
+            padding: '10px',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer',
+            fontWeight: 'bold'
+        }
+    };
 
-            <label style={{ display: "block", marginBottom: "10px", fontWeight: "bold" }}>
-                <input type="checkbox" checked={isControlled} onChange={handleToggle} style={{ marginRight: "8px" }} />
+    return (
+        <div style={styles.container}>
+            <h1 style={styles.heading}>{isControlled ? "Controlled" : "Uncontrolled"} Form</h1>
+            <label style={styles.label}>
+                <input type="checkbox" checked={isControlled} onChange={handleToggle} />
                 Toggle Form Control
             </label>
+            <form onSubmit={handleSubmit} style={styles.form}>
+                <label style={styles.label}>Name:</label>
+                <input type="text" name="name" value={formData.name} onChange={handleChange} disabled={!isControlled} style={styles.input} />
 
-            <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column" }}>
-                <label style={{ marginBottom: "5px", fontWeight: "bold" }}>Name:</label>
-                {isControlled ? (
-                    <input
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        style={{ padding: "8px", marginBottom: "15px", borderRadius: "4px", border: "1px solid #ccc" }}
-                    />
-                ) : (
-                    <input type="text" style={{ padding: "8px", marginBottom: "15px", borderRadius: "4px", border: "1px solid #ccc" }} />
-                )}
+                <label style={styles.label}>Email:</label>
+                <input type="email" name="email" value={formData.email} onChange={handleChange} disabled={!isControlled} style={styles.input} />
 
-                <label style={{ marginBottom: "5px", fontWeight: "bold" }}>Email:</label>
-                {isControlled ? (
-                    <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        style={{ padding: "8px", marginBottom: "15px", borderRadius: "4px", border: "1px solid #ccc" }}
-                    />
-                ) : (
-                    <input type="email" style={{ padding: "8px", marginBottom: "15px", borderRadius: "4px", border: "1px solid #ccc" }} />
-                )}
+                <label style={styles.label}>Password:</label>
+                <input type="password" name="password" value={formData.password} onChange={handleChange} disabled={!isControlled} style={styles.input} />
 
-                <label>Password</label>
-                {isControlled ? (
-                    <input type='password' name="password" value={formData.password} onChange={handleChange} />
-                )
-                    :
-                    (<input type='password'></input>)
-                }
+                <label style={styles.label}>Age:</label>
+                <input type="text" name="age" value={formData.age} onChange={handleChange} disabled={!isControlled} style={styles.input} />
 
-                <label>Age</label>
-                {isControlled ? (
-                    <input type='text' name="age" value={formData.age} onChange={handleChange} />
-                )
-                    :
-                    (<input type='text'></input>)
-                }
+                <label style={styles.label}>Gender:</label>
+                <div>
+                    <label><input type="radio" name="gender" value="Male" checked={formData.gender === "Male"} onChange={handleChange} /> Male</label>
+                    <label><input type="radio" name="gender" value="Female" checked={formData.gender === "Female"} onChange={handleChange} /> Female</label>
+                </div>
 
-                <label>Gender</label>
-                <input type='radio' name="Male" value="Male" checked={formData.gender === "Male"} onChange={handleChange} />
-                <input type='radio' name="Female" value="Female" checked={formData.gender === "Female"} onChange={handleChange} />
+                <label style={styles.label}>Country:</label>
+                <select name="country" value={formData.country} onChange={handleChange} disabled={!isControlled} style={styles.input}>
+                    <option value="India">India</option>
+                    <option value="England">England</option>
+                    <option value="Germany">Germany</option>
+                </select>
 
+                <label style={styles.label}>Hobbies:</label>
+                <div>
+                    <label><input type="checkbox" name="hobbies" value="Reading" checked={formData.hobbies.includes("Reading")} onChange={handleChange} /> Reading</label>
+                    <label><input type="checkbox" name="hobbies" value="Sports" checked={formData.hobbies.includes("Sports")} onChange={handleChange} /> Sports</label>
+                    <label><input type="checkbox" name="hobbies" value="Traveling" checked={formData.hobbies.includes("Traveling")} onChange={handleChange} /> Traveling</label>
+                </div>
 
+                <label style={styles.label}>
+                    <input type="checkbox" name="terms" checked={formData.terms} onChange={handleChange} />
+                    I agree to the terms and conditions
+                </label>
 
-                <button type="submit" style={{ backgroundColor: "#007BFF", color: "white", padding: "10px", border: "none", borderRadius: "4px", cursor: "pointer", fontWeight: "bold" }}>
-                    Submit
-                </button>
+                <button type="submit" style={styles.button}>Submit</button>
             </form>
         </div>
     );
 }
 
 export default BothForm;
-

@@ -1,8 +1,19 @@
 import React, { useState, useEffect } from "react";
 
-const CounterPage = ({ theme }) => {
+const Counter = ({ theme }) => {
     const [count, setCount] = useState(0);
     const [isAutoIncrementing, setIsAutoIncrementing] = useState(false);
+
+    // Load count from localStorage on mount
+    useEffect(() => {
+        const savedCount = JSON.parse(localStorage.getItem("count")) || 0;
+        setCount(savedCount);
+    }, []);
+
+    // Save count to localStorage whenever it changes
+    useEffect(() => {
+        localStorage.setItem("count", JSON.stringify(count));
+    }, [count]);
 
     useEffect(() => {
         let interval;
@@ -81,11 +92,17 @@ const CounterPage = ({ theme }) => {
                     <button style={{ ...styles.button, ...styles.autoIncrement }} onClick={() => setIsAutoIncrementing(!isAutoIncrementing)}>
                         {isAutoIncrementing ? "Stop Auto" : "Auto Increment"}
                     </button>
-                    <button style={{ ...styles.button, ...styles.reset }} onClick={() => { setCount(0); setIsAutoIncrementing(false); }}>Reset</button>
+                    <button style={{ ...styles.button, ...styles.reset }} onClick={() => { 
+                        setCount(0); 
+                        setIsAutoIncrementing(false); 
+                        localStorage.setItem("count", JSON.stringify(0)); // Reset storage
+                    }}>
+                        Reset
+                    </button>
                 </div>
             </div>
         </div>
     );
 };
 
-export default CounterPage;
+export default Counter;

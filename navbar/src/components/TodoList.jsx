@@ -1,12 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function TodoList({ theme }) {
     const [todos, setTodos] = useState([]);
     const [task, setTask] = useState("");
 
+    // Load todos from localStorage when the component mounts
+    useEffect(() => {
+        const savedTodos = JSON.parse(localStorage.getItem("todos")) || [];
+        setTodos(savedTodos);
+    }, []);
+
+    // Save todos to localStorage whenever they change
+    useEffect(() => {
+        localStorage.setItem("todos", JSON.stringify(todos));
+    }, [todos]);
+
     const addTodo = () => {
         if (task.trim() === "") return;
-        setTodos([...todos, { text: task, completed: false }]);
+        const newTodos = [...todos, { text: task, completed: false }];
+        setTodos(newTodos);
         setTask("");
     };
 
@@ -17,7 +29,8 @@ function TodoList({ theme }) {
     };
 
     const removeTodo = (index) => {
-        setTodos(todos.filter((_, i) => i !== index));
+        const newTodos = todos.filter((_, i) => i !== index);
+        setTodos(newTodos);
     };
 
     const styles = {
@@ -37,7 +50,6 @@ function TodoList({ theme }) {
             boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)",
             textAlign: "center",
             color: theme === "light" ? "#333" : "#fff",
-            
         },
         heading: { fontSize: "24px", marginBottom: "15px" },
         inputContainer: {
@@ -73,11 +85,15 @@ function TodoList({ theme }) {
             borderRadius: "5px",
             marginBottom: "10px",
             backgroundColor: theme === "light" ? "#f0f0f0" : "#555",
-            Color: theme === "light" ? "#555" : "#fff",
+            color: theme === "light" ? "#333" : "#fff",
             boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.1)",
-            border : "1px solid #ccc"
+            border: "1px solid #ccc",
         },
-        todoText: { cursor: "pointer", fontSize: "16px",Color: theme === "light" ? "#fff" : "#fff", },
+        todoText: {
+            cursor: "pointer",
+            fontSize: "16px",
+            textDecoration: "none",
+        },
         removeButton: {
             background: "none",
             border: "none",

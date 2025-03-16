@@ -6,7 +6,7 @@ function Home({ theme }) {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        width: "100vw",       // Full viewport width
+        width: "100vw",     
         textAlign: "center",
         backgroundColor: theme === "light" ? "#fff" : "#333",
         color: theme === "light" ? "#333" : "#fff",
@@ -41,12 +41,12 @@ function Home({ theme }) {
 
     return (
         <div style={homeStyle}>
-            <h1 style={textStyle}>Welcome to the Home Page! 🏡</h1>
+            <h1 style={textStyle}>Welcome to the Home Page..!</h1>
             <p style={paragraphStyle}>
                 Explore our website and enjoy seamless navigation. Click on the tabs above to discover more!
             </p>
             <button style={buttonStyle} onClick={() => alert("Welcome!")}>
-                Get Started 🚀
+                Get Started
             </button>
         </div>
     );

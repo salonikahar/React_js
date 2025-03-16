@@ -8,12 +8,10 @@ function Header({ activeTab, setActiveTab, theme, toggleTheme }) {
     { id: "todos", label: "Todo List" },
     { id: "profile", label: "User Profile" },
     { id: "counter", label: "Counter" },
-    { id: "fruits", label: "Fruit List" },
+    { id: "list", label: "list" },
   ];
 
-  const textColor = {
 
-  }
   return (
     <>
       <header style={{
