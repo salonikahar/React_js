@@ -16,7 +16,7 @@ const ElectricProductList = ({ theme }) => {
     name: "",
     brand: "",
     price: "",
-    stock: 1, // Default minimum quantity is 1
+    stock: 1,
   });
 
   const nameInputRef = useRef(null);

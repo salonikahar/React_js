@@ -1,0 +1,150 @@
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 97, 136, 0.489); 
+    padding: 10px 30px;
+    /* border-radius: 10px; */
+    width: 96vw;
+    margin-top: -8px;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding-left: 100px;
+}
+
+.nav {
+    display: flex;
+    gap: 20px;
+    padding-right: 50px;
+}
+
+.nav-link {
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: all 0.3s ease-in-out;
+    border-radius: 5px;
+}
+
+/* home */
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background: #f8f9fa; 
+    padding: 82px;
+}
+
+/* 📌 Form Box */
+.form-box {
+    background: white;
+    padding-left: 0px;
+    padding-right: 70px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    
+}
+
+/* 🎯 Form Heading */
+.form-heading {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #343a40;
+    margin-bottom: 20px;
+}
+
+/* 📝 Table Styling */
+.form-table {
+    width: 100%;
+}
+
+/* 🔹 Labels */
+.label {
+    font-weight: 700;
+    color: #495057;
+    padding: 10px;
+    font-size: 20px;
+}
+
+/* ✍️ Input Fields */
+.input-field {
+    padding: 8px 0;
+}
+
+.input-box, .select-box {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+    transition: border 0.3s ease-in-out;
+}
+
+.input-box:focus, .select-box:focus {
+    border: 1px solid #007bff;
+}
+
+/* 🎯 Radio & Checkbox */
+input[type="radio"], input[type="checkbox"] {
+    margin-right: 5px;
+    transform: scale(1.1);
+}
+
+/* 🚀 Button Container */
+.button-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* 🎨 Submit Button */
+.submit-btn {
+    background: #007bff;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.submit-btn:hover {
+    background: #0056b3;
+}
+
+/* ❌ Delete Button */
+.delete-btn {
+    background: #dc3545;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.delete-btn:hover {
+    background: #b02a37;
+}
+
+

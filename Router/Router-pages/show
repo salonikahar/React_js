@@ -1,0 +1,97 @@
+
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import "../styles.css"
+
+function ShowData() {
+  const [stuData, setStuData] = useState([]);
+  const [search, setSearch] = useState("");
+
+  // Fetch Student Data from LocalStorage
+  useEffect(() => {
+    const getStudentData = JSON.parse(localStorage.getItem("student")) || [];
+    setStuData(getStudentData);
+  }, []);
+
+  // Delete Student Data
+  const deleteData = (index) => {
+    const updatedData = stuData.filter((_, i) => i !== index);
+    setStuData(updatedData);
+    localStorage.setItem("student", JSON.stringify(updatedData));
+  };
+
+  // Sorting Function
+  const sortingByName = (e) => {
+    const order = e.target.value;
+    const sortedData = [...stuData].sort((a, b) =>
+      order === "asc"
+        ? a.name.localeCompare(b.name)
+        : b.name.localeCompare(a.name)
+    );
+    setStuData(sortedData);
+  };
+
+  return (
+    <div style={{ textAlign: "center", display: "flex", justifyContent: "center", alignItems: "center" }}>
+      <div>
+        {/* Search Input */}
+        <input
+          type="text"
+          name="search"
+          onChange={(e) => setSearch(e.target.value.toLowerCase())}
+          placeholder="Search by Name"
+        />
+
+        {/* Sorting Dropdown */}
+        <select name="sortingData" onChange={sortingByName}>
+          <option value="">Select Sort</option>
+          <option value="asc">Ascending</option>
+          <option value="dsc">Descending</option>
+        </select>
+
+        {/* Display Table */}
+        {stuData.length > 0 ? (
+          <table border={1} style={{ marginTop: "20px", width: "80%", textAlign: "center" }}>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Gender</th>
+                <th>Hobby</th>
+                <th>City</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {stuData
+                .filter((v) =>
+                  search
+                    ? v.name?.toLowerCase().includes(search) || v.email?.toLowerCase().includes(search)
+                    : true
+                )
+                .map((v, i) => (
+                  <tr key={i}>
+                    <td>{v.name || "Empty"}</td>
+                    <td>{v.email || "Empty"}</td>
+                    <td>{v.password || "Empty"}</td>
+                    <td>{v.gender || "Not Selected"}</td>
+                    <td>{v.hobby?.join(", ") || "Not Selected"}</td>
+                    <td>{v.city || "Not Selected"}</td>
+                    <td>
+                      <button onClick={() => deleteData(i)} style={{ marginRight: "10px" }}>Delete</button>
+                      <Link to={`/update/${i}`}>Update</Link>
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        ) : (
+          <h3 style={{ marginTop: "20px", color: "red" }}>No Data Available</h3>
+        )}
+      </div>
+    </div>
+  );
+}
+
+export default ShowData;
