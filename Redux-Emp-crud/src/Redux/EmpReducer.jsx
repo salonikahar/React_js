@@ -27,9 +27,10 @@ const EmpReducer = (state = intialState, action) => {
             return state;
         
         case EDIT_EMP :
+            console.log(action.payload.pos)
             return {
                 ...state.employee,
-                employee: state.employee.map((v,i)=> i == action.payload.pos ? action.payload.employeeData :v)
+                employee: state.employee.map((v,i)=> (i == action.payload.pos ? action.payload.employeeData :v))
             }
 
         default:

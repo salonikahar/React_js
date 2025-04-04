@@ -17,7 +17,7 @@ export const deleteEmpData = (pos) => ({
     payload : pos
 })
 
-export const editEmpData = (pos,employeeData) =>({
+export const editEmpData = (employeeData,pos) =>({
     type : EDIT_EMP,
     payload : {
         pos , employeeData
