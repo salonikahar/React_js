@@ -13,12 +13,13 @@ function Header() {
           Redux
         </Navbar.Brand>
           <Nav className="ms-auto">
-            <Nav.Link as={Link} to="/" className="text-white">
-              View
-            </Nav.Link>
-            <Nav.Link as={Link} to="/add" className="text-white">
+          <Nav.Link as={Link} to="/" className="text-white">
               Add Data
             </Nav.Link>
+            <Nav.Link as={Link} to="/view" className="text-white">
+              View
+            </Nav.Link>
+            
           </Nav>
       </Container>
     </Navbar>

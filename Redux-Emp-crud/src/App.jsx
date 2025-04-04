@@ -11,8 +11,8 @@ function App() {
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path='/' element={<ViewEmp />}></Route>
-        <Route path='/add' element={<AddEmp />}></Route>
+        <Route path='/' element={<AddEmp />}></Route>
+        <Route path='/view' element={ <ViewEmp />}></Route>
         <Route path='/edit/:index' element={<UpdateEmp />}></Route>
       </Routes>
     </BrowserRouter>
