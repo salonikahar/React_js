@@ -19,6 +19,7 @@ function AddEmp() {
         let submitData =(e) => {
             e.preventDefault();
             dispatch(addEmp (emp))
+            setEmp({})
         }
     return (
            

@@ -1,4 +1,4 @@
-import { ADD_EMP, DELETE_EMP, VIEW_EMP } from "./Action";
+import { ADD_EMP, DELETE_EMP, EDIT_EMP, VIEW_EMP } from "./Action";
 
 const intialState = {
     employee: [{
@@ -25,7 +25,13 @@ const EmpReducer = (state = intialState, action) => {
             };
         case VIEW_EMP:
             return state;
-       
+        
+        case EDIT_EMP :
+            return {
+                ...state.employee,
+                employee: state.employee.map((v,i)=> i == action.payload.pos ? action.payload.employeeData :v)
+            }
+
         default:
             return state;
     }
