@@ -36,7 +36,9 @@ function ViewEmp() {
               <td>{v.password}</td>
               <td>{v.age}</td>
               <td>{v.gender}</td>
-              <td>{Array.isArray(v.hobby) ? v.hobby.join(", ") : v.hobby}</td>
+              {/* <td>{Array.isArray(v.hobby) ? v.hobby.join(", ") : v.hobby}</td> */}
+              <td>{v.hobby?.length ? v.hobby.join(", ") : "Not Selected"}</td>
+
               
               <td>
                 <Button variant="danger" size="sm" className="me-2" onClick={() => deleteEmp(i)}>

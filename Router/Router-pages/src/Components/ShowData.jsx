@@ -9,7 +9,7 @@ function ShowData() {
   useEffect(() => {
     const getStudentData = JSON.parse(localStorage.getItem("student")) || [];
     setStuData(getStudentData);
-  }, []);
+  }, [setStuData]);
 
   const deleteData = (index) => {
     const updatedData = stuData.filter((_, i) => i !== index);

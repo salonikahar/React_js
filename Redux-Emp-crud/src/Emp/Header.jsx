@@ -17,19 +17,13 @@ function Header() {
               Add Data
             </Nav.Link>
             <Nav.Link as={Link} to="/view" className="text-white">
-              View
+              View Data
             </Nav.Link>
             
           </Nav>
       </Container>
     </Navbar>
-    // <header >
-    //   <div>Redux</div>
-    //   <nav >
-    //     <Link to="/" >View</Link>
-    //     <Link to="/add" >Add-Data</Link>
-    //   </nav>
-    // </header>
+
   )
 }
 
