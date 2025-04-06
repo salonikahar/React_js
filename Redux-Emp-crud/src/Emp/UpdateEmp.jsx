@@ -157,51 +157,7 @@ function UpdateEmp() {
         </div>
       </Form>
     </Container>
-        // <div>
-        //     <h1>edit Employee form</h1>
-        //     <form action="post" onSubmit={(e) => submitData(e)}>
-        //         <table>
-        //             <tr>
-        //                 <td>Name :</td>
-        //                 <td><input type="text" name="name" onChange={(e) => getInput(e)} value={emp.name ? emp.name : ""} /></td>
-        //             </tr>
-        //             <tr>
-        //                 <td>Age :</td>
-        //                 <td><input type="number" name="age" onChange={(e) => getInput(e)} value={emp.age ? emp.age : ""} /></td>
-        //             </tr>
-        //             <tr>
-        //                 <td>Email :</td>
-        //                 <td><input type="email" name="email" onChange={(e) => getInput(e)} value={emp.email ? emp.email : ""} /></td>
-        //             </tr>
-
-        //             <tr>
-        //                 <td>Password : </td>
-        //                 <td><input type="text" name="password" onChange={(e) => getInput(e)} value={emp.password ? emp.password : ""} /></td>
-        //             </tr>
-
-        //             <tr>
-        //                 <td>Gender :</td>
-        //                 <td>
-        //                     <input type="radio" name='gender' value='male' onChange={(e) => getInput(e)}
-        //                         checked={emp.gender === "male"} />Male
-        //                     <input type="radio" name="gender" onChange={(e) => getInput(e)} checked={emp.gender === "female"} value='female' />Female
-
-        //                 </td>
-        //             </tr>
-
-        //             <tr>
-        //                 <td>Hobby :</td>
-        //                 <td><input type="checkbox" name="hobby" value='coding' onChange={(e) => getInput(e)} checked={hobby.includes("coding")} />Coding
-        //                     <input type="checkbox" name="hobby" value='reading' onChange={(e) => getInput(e)} checked={hobby.includes("reading")} /> Reading
-        //                     <input type="checkbox" name="hobby" value='speaking' onChange={(e) => getInput(e)} checked={hobby.includes("speaking")} />Speaking</td>
-        //             </tr>
-        //             <tr>
-
-        //                 <td><input type="submit" name="submit" value='edit' /></td>
-        //             </tr>
-        //         </table>
-        //     </form>
-        // </div>
+        
     )
 }
 
