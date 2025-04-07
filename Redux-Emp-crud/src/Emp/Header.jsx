@@ -7,7 +7,7 @@ import Navbar from 'react-bootstrap/Navbar';
 
 function Header() {
   return (
-    <Navbar expand="lg" bg="secondary" variant="dark">
+    <Navbar expand="lg" bg="dark" variant="dark">
       <Container>
         <Navbar.Brand as={Link} to="/" className="fw-bold fs-4">
           Redux

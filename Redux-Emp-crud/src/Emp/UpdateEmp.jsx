@@ -6,45 +6,50 @@ import { Form, Button, Row, Col, Container } from 'react-bootstrap';
 
 function UpdateEmp() {
 
-    let [emp, setEmp] = useState({})
-    const [hobby, setHobby] = useState([]);
+  let [emp, setEmp] = useState({})
+  const [hobby, setHobby] = useState([]);
 
-    let empData = useSelector((state) => state.empData.employee)
-    let empId = useParams();
-    let navigate = useNavigate();
-    let dispatch = useDispatch();
+  let empData = useSelector((state) => state.empData.employee)
+  console.log(empData)
+  let empId = useParams();
+  let navigate = useNavigate();
+  let dispatch = useDispatch();
 
-    useEffect(() => {
-        if (emp?.hobby) {
-            setHobby(emp.hobby);
-          }
-        setEmp(empData[empId.index]);
-    }, [setEmp , setHobby]);
-
-    let getInput = (e) => {
-        let name = e.target.name;
-        let value = e.target.value;
-        let prevHobby = [...hobby];
-
-        if (name === 'hobby') {
-            if (e.target.checked) {
-                prevHobby.push(value);
-            } else {
-                prevHobby = prevHobby.filter((v) => v !== value);
-            }
-            setHobby(prevHobby);
-            setEmp({ ...emp, hobby: prevHobby });
-        } else {
-            setEmp({ ...emp, [name]: value });
-        }
+  useEffect(() => {
+  
+    if (empData[empId.index].hobby) {           //  if (emp?.hobby) {
+      setHobby(empData[empId.index].hobby);     //  setHobby(emp.hobby);
     }
-    let submitData = (e) => {
-        e.preventDefault();
-        dispatch(editEmpData(emp, empId.index))
-        navigate('/view');
-    };
-    return (
-        <Container className="my-5">
+    setEmp(empData[empId.index]);               //  setEmp(empData[empId.index]);
+  }, [setEmp, setHobby]);                       // }, [setEmp , setHobby]);
+
+  let getInput = (e) => {
+    let name = e.target.name;
+    let value = e.target.value;
+    let prevHobby = [...hobby];
+
+    if (name === 'hobby') {
+      if (e.target.checked) {
+        prevHobby.push(value);
+      } else {
+        prevHobby = prevHobby.filter((v) => v !== value);
+      }
+      setHobby(prevHobby);
+      console.log(prevHobby)
+      setEmp({ ...emp, hobby: prevHobby });
+    } else {
+      setEmp({ ...emp, [name]: value });
+    }
+  }
+  let submitData = (e) => {
+    e.preventDefault();
+    console.log(emp);
+
+    dispatch(editEmpData(emp, empId.index))
+    navigate('/view');
+  };
+  return (
+    <Container className="my-5">
       <h1 className="text-center mb-4">Edit Employee Form</h1>
       <Form onSubmit={(e) => submitData(e)}>
         <Form.Group as={Row} className="mb-3">
@@ -105,7 +110,7 @@ function UpdateEmp() {
               name="gender"
               value="male"
               onChange={(e) => getInput(e)}
-              checked={emp.gender === "male"}
+              checked={emp.gender === "male" ? 'checked' : ''}
             />
             <Form.Check
               inline
@@ -114,7 +119,7 @@ function UpdateEmp() {
               name="gender"
               value="female"
               onChange={(e) => getInput(e)}
-              checked={emp.gender === "female"}
+              checked={emp.gender === "female" ? 'checked' : ''}
             />
           </Col>
         </Form.Group>
@@ -122,6 +127,7 @@ function UpdateEmp() {
         <Form.Group as={Row} className="mb-4">
           <Form.Label column sm={2}>Hobby:</Form.Label>
           <Col sm={10}>
+
             <Form.Check
               inline
               type="checkbox"
@@ -129,7 +135,7 @@ function UpdateEmp() {
               name="hobby"
               value="coding"
               onChange={(e) => getInput(e)}
-              checked={hobby.includes("coding")}
+              checked={hobby.includes("coding") ? 'checked' : ''}
             />
             <Form.Check
               inline
@@ -138,7 +144,7 @@ function UpdateEmp() {
               name="hobby"
               value="reading"
               onChange={(e) => getInput(e)}
-              checked={hobby.includes("reading")}
+              checked={hobby.includes("reading") ? 'checked' : ''}
             />
             <Form.Check
               inline
@@ -147,7 +153,7 @@ function UpdateEmp() {
               name="hobby"
               value="speaking"
               onChange={(e) => getInput(e)}
-              checked={hobby.includes("speaking")}
+              checked={hobby.includes("speaking") ? 'checked' : ''}
             />
           </Col>
         </Form.Group>
@@ -157,8 +163,8 @@ function UpdateEmp() {
         </div>
       </Form>
     </Container>
-        
-    )
+
+  )
 }
 
 export default UpdateEmp;
