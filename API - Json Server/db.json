@@ -10,6 +10,11 @@
       "rating": {
         "rate": 3.9,
         "count": 120
+      },
+      "userReview": {
+        "name": "John",
+        "rating": 4,
+        "feedback": "Nice product!"
       }
     },
     {
@@ -22,6 +27,11 @@
       "rating": {
         "rate": 4.7,
         "count": 500
+      },
+      "userReview": {
+        "name": "",
+        "rating": 0,
+        "feedback": ""
       }
     },
     {

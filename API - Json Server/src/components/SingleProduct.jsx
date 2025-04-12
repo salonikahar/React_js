@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import { Container, Row, Col, Card, Button, Modal } from 'react-bootstrap';
+import Review from './Review';
 
 function SingleProduct() {
     let ProData = useParams();
     let [product, setProduct] = useState({});
     let [category, setCategory] = useState([]);
-
+   
     useEffect(() => {
         getCategory()
         getProduct()
@@ -57,16 +58,12 @@ function SingleProduct() {
                         </Button>
                     </div>
                     <div className='mt-5'>
-                        <Link to={'/review/' + ProData.ProductId}>
-                            <Button variant="dark" size="lg" >
-                                Review
-                            </Button>
-                        </Link>
+                        <Review/>
                     </div>
                 </Col>
 
             </Row>
-        </Container>
+        </Container >
     )
 }
 
