@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 
 function SingleProduct() {
@@ -25,7 +25,6 @@ function SingleProduct() {
     }
 
     return (
-
         <Container className="my-5">
             <h1 className="text-center mb-4 text-uppercase border-bottom pb-2">
                 Product Details
@@ -45,13 +44,24 @@ function SingleProduct() {
 
                 <Col md={7} className="d-flex flex-column" >
                     <h3 className="fw-bold">{product.title}</h3>
+                    <h6 className="fw-bold">{product.category}</h6>
                     <p className="text-muted">{product.description}</p>
                     <h4 className="text-danger fw-semibold mb-4">${product.price}</h4>
 
                     <div className="mt-auto">
-                        <Button variant="dark" size="lg" >
+                        <Button variant="dark" className='mx-1' >
                             Add to Cart
                         </Button>
+                        <Button variant="dark" className='mx-1'>
+                            Buy Now
+                        </Button>
+                    </div>
+                    <div className='mt-5'>
+                        <Link to={'/review/' + ProData.ProductId}>
+                            <Button variant="dark" size="lg" >
+                                Review
+                            </Button>
+                        </Link>
                     </div>
                 </Col>
 

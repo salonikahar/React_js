@@ -56,7 +56,7 @@ function Product() {
                     {v.price} $
                   </Card.Text>
                   <Button variant="danger" onClick={() => deleteProData(v.id)}>Delete</Button>
-                  <Card.Link to={"/update/" + v.id} style={{ textDecoration: 'none', }}> <Button variant="success" className='ms-2'>Edit</Button></Card.Link>
+                  <Link to={"/update/" + v.id} style={{ textDecoration: 'none', }}> <Button variant="success" className='ms-2'>Edit</Button></Link>
                   <Link to={"/SingleProduct/" + v.id}>
                     <Card.Text>More Details...</Card.Text >
                   </Link>

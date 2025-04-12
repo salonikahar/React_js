@@ -41,7 +41,6 @@ function UpdatePro() {
 
     let submitData = async (e) => {
         e.preventDefault();
-        // console.log("Updating product with ID:", productData.ProductId);
 
         let updateData = await fetch("http://localhost:3000/products/" + productData.ProductId, {
             method: "put",

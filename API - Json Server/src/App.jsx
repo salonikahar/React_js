@@ -6,6 +6,7 @@ import Header from './components/Header';
 import AddPro from './components/AddPro';
 import UpdatePro from './components/UpdatePro';
 import SingleProduct from './components/SingleProduct';
+import Review from './components/Review';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path='/add' element={<AddPro />}></Route>
           <Route path='/update/:ProductId' element={<UpdatePro />}></Route>
           <Route path='/SingleProduct/:ProductId' element={<SingleProduct />}></Route>
+          <Route path='/review/:ProductId' element={<Review/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>
