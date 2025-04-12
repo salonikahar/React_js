@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { Container, Row, Col, Card, Button, Modal, Form } from 'react-bootstrap';
 import { IoIosStarOutline, IoIosStar } from "react-icons/io";
 import { RiResetLeftFill } from "react-icons/ri";
+import { ToastContainer, toast } from 'react-toastify';
 
 function Review() {
     let proData = useParams();
@@ -10,8 +11,8 @@ function Review() {
     let [star, setStar] = useState([1, 2, 3, 4, 5]);
     let [reviewStar, setReviewStar] = useState(-1);
     let [show, setShow] = useState(false);
-    
-    
+    let [reviewData, setReviewData] = useState({})
+
     let handleClose = () => { setShow(false) }
 
     useEffect(() => {
@@ -19,13 +20,63 @@ function Review() {
         getProduct()
     }, [setProduct])
 
+    let getReview = async () => {
+        let getReviewdata = await fetch('http://localhost:3000/products/userReview')
+        let ReviewData = await getReviewdata.json();
+        setReviewData(ReviewData)
+    }
+
     let getProduct = async () => {
         let proDetails = await fetch("http://localhost:3000/products/" + proData.ProductId)
         let data = await proDetails.json();
         setProduct(data)
+        if (data.userReview) {
+            setReviewData({
+                name: data.userReview.name || '',
+                feedback: data.userReview.feedback || ''
+            });
+            setReviewStar(data.userReview.rating || -1);
+        }
     }
 
-    
+    let getInput = (e) => {
+        let name = e.target.name;
+        let value = e.target.value;
+
+        setReviewData({ ...reviewData, [name]: value });
+    }
+
+    let submitReview = async (e) => {
+        e.preventDefault();
+        const updatedProduct = {
+            ...product,
+            userReview: {
+                ...reviewData,
+                rating: reviewStar
+            }
+        };
+
+        console.log(updatedProduct)
+        try {
+            let res = await fetch(`http://localhost:3000/products/`  + proData.ProductId, {
+                method: 'PUT',
+                body: JSON.stringify(updatedProduct)
+            });
+
+            if (res.ok) {
+                toast.success("Review Submitted Successfully!");
+                setShow(false);
+                setReviewData({ name: '', feedback: '' });
+                setReviewStar(-1);
+                getProduct(); // Refresh product info
+            } else {
+                toast.dismiss("Failed to submit review.");
+            }
+        } catch (error) {
+            console.error("Error submitting review:", error);
+        }
+
+    }
 
     return (
         <>
@@ -40,10 +91,10 @@ function Review() {
                     </Modal.Header>
                     <Modal.Body>
 
-                        <form style={{ margin: '0 auto', padding: '20px' }}>
+                        <form style={{ margin: '0 auto', padding: '20px' }} onSubmit={(e) => submitReview(e)} method='post'>
                             <Form.Group controlId="formName" className="mb-3">
                                 <Form.Label>Enter Your Name:</Form.Label>
-                                <Form.Control type="text" name="name" placeholder="Your name" />
+                                <Form.Control type="text" name="name" placeholder="Your name" onChange={getInput} />
                             </Form.Group>
 
                             <Form.Group controlId="formReview" className="mb-3">
@@ -71,6 +122,7 @@ function Review() {
                                     rows={3}
                                     name="feedback"
                                     placeholder="Write something..."
+                                    onChange={getInput}
                                 />
                             </Form.Group>
                         </form>
@@ -79,14 +131,14 @@ function Review() {
                         <Button variant="secondary" onClick={handleClose}>
                             Close
                         </Button>
-                        <Button variant="dark" onClick={handleClose}>
+                        <Button variant="dark" type='submit' onClick={submitReview}>
                             Confirm
                         </Button>
                     </Modal.Footer>
                 </Modal>
             </div>
 
-
+            <ToastContainer />
         </>
     )
 }

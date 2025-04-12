@@ -1,12 +1,12 @@
 import React from 'react'
 import {BrowserRouter,Route ,Routes} from "react-router-dom"
-import Product from './components/product'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/Header';
 import AddPro from './components/AddPro';
 import UpdatePro from './components/UpdatePro';
 import SingleProduct from './components/SingleProduct';
 import Review from './components/Review';
+import Product from './components/Product';
 
 
 function App() {
