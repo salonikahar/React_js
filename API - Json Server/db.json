@@ -11,11 +11,18 @@
         "rate": 3.9,
         "count": 120
       },
-      "userReview": {
-        "name": "yash",
-        "feedback": "hello",
-        "rating": 2
-      }
+      "userReview": [
+        {
+          "name": "div",
+          "feedback": "hello",
+          "rating": 5
+        },
+        {
+          "name": "sdasd",
+          "feedback": "ag",
+          "rating": 3
+        }
+      ]
     },
     {
       "id": "3",
@@ -28,11 +35,33 @@
         "rate": 4.7,
         "count": 500
       },
-      "userReview": {
-        "name": "",
-        "rating": 0,
-        "feedback": ""
-      }
+      "userReview": [
+        {
+          "name": "",
+          "rating": 0,
+          "feedback": ""
+        },
+        {
+          "name": "saloni",
+          "feedback": "geydgegdf",
+          "rating": 5
+        },
+        {
+          "name": "kavay",
+          "feedback": "ddd",
+          "rating": 5
+        },
+        {
+          "name": "sam",
+          "feedback": "ghygyygv",
+          "rating": 5
+        },
+        {
+          "name": "sam",
+          "feedback": "feb",
+          "rating": 3
+        }
+      ]
     },
     {
       "id": "5",
@@ -44,6 +73,11 @@
       "rating": {
         "rate": 4.6,
         "count": 400
+      },
+      "userReview": {
+        "name": "divyam",
+        "feedback": "hello",
+        "rating": 5
       }
     },
     {

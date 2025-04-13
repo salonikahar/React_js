@@ -7,6 +7,7 @@ import UpdatePro from './components/UpdatePro';
 import SingleProduct from './components/SingleProduct';
 import Review from './components/Review';
 import Product from './components/Product';
+import ShowReview from './components/showReview';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path='/update/:ProductId' element={<UpdatePro />}></Route>
           <Route path='/SingleProduct/:ProductId' element={<SingleProduct />}></Route>
           <Route path='/review/:ProductId' element={<Review/>}></Route>
+          <Route path='/showReview/:ProductId' element={<ShowReview/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>

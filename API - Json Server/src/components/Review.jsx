@@ -27,17 +27,19 @@ function Review() {
     }
 
     let getProduct = async () => {
-        let proDetails = await fetch("http://localhost:3000/products/" + proData.ProductId)
+        let proDetails = await fetch("http://localhost:3000/products/" + proData.ProductId);
         let data = await proDetails.json();
-        setProduct(data)
-        if (data.userReview) {
-            setReviewData({
-                name: data.userReview.name || '',
-                feedback: data.userReview.feedback || ''
-            });
-            setReviewStar(data.userReview.rating || -1);
+        setProduct(data);
+    
+        if (Array.isArray(data.userReview) && data.userReview.length > 0) {
+            const latestReview = data.userReview[data.userReview.length - 1];
+            setReviewData({ name: latestReview.name, feedback: latestReview.feedback });
+            setReviewStar(latestReview.rating);
+        } else {
+            setReviewData({});
+            setReviewStar(-1);
         }
-    }
+    };
 
     let getInput = (e) => {
         let name = e.target.name;
@@ -48,35 +50,55 @@ function Review() {
 
     let submitReview = async (e) => {
         e.preventDefault();
-        const updatedProduct = {
-            ...product,
-            userReview: {
-                ...reviewData,
-                rating: reviewStar
-            }
+    
+        const newReview = {
+            name: reviewData.name,
+            feedback: reviewData.feedback,
+            rating: reviewStar,
         };
-
-        console.log(updatedProduct)
+    
         try {
-            let res = await fetch(`http://localhost:3000/products/`  + proData.ProductId, {
+            // Fetch the latest product data (in case it's changed)
+            let res = await fetch(`http://localhost:3000/products/${proData.ProductId}`);
+            let latestProduct = await res.json();
+    
+            // Ensure userReview is an array
+            let existingReviews = Array.isArray(latestProduct.userReview)
+                ? latestProduct.userReview
+                : latestProduct.userReview
+                ? [latestProduct.userReview]
+                : [];
+    
+            // Add new review to the array
+            let updatedProduct = {
+                ...latestProduct,
+                userReview: [...existingReviews, newReview],
+            };
+    
+            // PUT the updated product back
+            let updateRes = await fetch(`http://localhost:3000/products/${proData.ProductId}`, {
                 method: 'PUT',
-                body: JSON.stringify(updatedProduct)
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(updatedProduct),
             });
-
-            if (res.ok) {
+    
+            if (updateRes.ok) {
                 toast.success("Review Submitted Successfully!");
                 setShow(false);
                 setReviewData({ name: '', feedback: '' });
                 setReviewStar(-1);
-                getProduct(); // Refresh product info
+                getProduct(); // Refresh the product
             } else {
-                toast.dismiss("Failed to submit review.");
+                toast.error("Failed to submit review.");
             }
         } catch (error) {
             console.error("Error submitting review:", error);
+            toast.error("Something went wrong.");
         }
-
-    }
+    };
+    
 
     return (
         <>
