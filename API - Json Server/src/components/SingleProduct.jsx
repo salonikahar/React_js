@@ -5,6 +5,8 @@ import {
 } from 'react-bootstrap';
 import { IoIosStar, IoIosStarOutline } from "react-icons/io";
 import { toast } from 'react-toastify';
+import Review from './Review';
+import ShowReview from './showReview';
 
 function SingleProduct() {
     const { ProductId } = useParams();
@@ -96,11 +98,12 @@ function SingleProduct() {
                     <div className="mb-4">
                         <Button variant="dark" className='me-2'>Add to Cart</Button>
                         <Button variant="dark">Buy Now</Button>
+                        {/* <Review/> */}
                     </div>
 
                 </Col>
                 <Col>
-
+                    {/* <ShowReview/> */}
                     <h4 className="mt-4 mb-3">Leave a Review</h4>
                     <Form onSubmit={handleSubmitReview}>
                         <Form.Group className="mb-3" controlId="reviewerName">

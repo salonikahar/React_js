@@ -10,19 +10,7 @@
       "rating": {
         "rate": 3.9,
         "count": 120
-      },
-      "userReview": [
-        {
-          "name": "div",
-          "feedback": "hello",
-          "rating": 5
-        },
-        {
-          "name": "sdasd",
-          "feedback": "ag",
-          "rating": 3
-        }
-      ]
+      }
     },
     {
       "id": "3",
@@ -34,30 +22,7 @@
       "rating": {
         "rate": 4.7,
         "count": 500
-      },
-      "userReview": [
-        
-        {
-          "name": "saloni",
-          "feedback": "geydgegdf",
-          "rating": 5
-        },
-        {
-          "name": "kavay",
-          "feedback": "ddd",
-          "rating": 5
-        },
-        {
-          "name": "sam",
-          "feedback": "ghygyygv",
-          "rating": 5
-        },
-        {
-          "name": "sam",
-          "feedback": "feb",
-          "rating": 3
-        }
-      ]
+      }
     },
     {
       "id": "5",
@@ -134,11 +99,6 @@
       "rating": {
         "rate": 2.6,
         "count": 235
-      },
-      "userReview": {
-        "name": "d",
-        "feedback": "dd",
-        "rating": 2
       }
     },
     {
@@ -148,6 +108,78 @@
       "price": "8000",
       "description": "euhfueufheufh",
       "image": "image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIALYAwQMBIgACEQEDEQH/xAAbAAABBQEBAAAAAAAAAAAAAAAAAQIEBQYDB//EAEUQAAEDAgQDBQUFBQUHBQAAAAEAAgMEEQUSITEGQWETIlFxgRQykaHwI0KxwdEVUmKS4QdUcpOyM1NjgqLS8RYkJUNE/8QAGAEAAwEBAAAAAAAAAAAAAAAAAAECAwT/xAAjEQEBAAICAgICAwEAAAAAAAAAAQIRAyESMQRBMlETImFx/9oADAMBAAIRAxEAPwDydCVKtGREqEqARFkoCVBERZOQgEsiyUBLZANslslslQDUJ1klkAhSWTrIISBtklk6yEGbZIQnIKQMsksn2SWQZiQp5SWQDLITrIQD0ISjdUkDdKlSoBqcEIQBZFkqEFRZFkoCtcCwSfGKjs4rMjYftJraNHh1PRA3IrYYnzStjiY+R7jYNY3MT6K8h4OxuSHOaRsQv3WyvDXO+a9EwTB6LCoTHRwHOR35XDvv8z+WynTzMjaA4sF3XsHC4StR5fp4/V4HilESKihnaP3gzMPi1VxFiRzG/Re3CspZ3lrKiJzv3RKCfhe6h4ng1BXsLKqnYX/vEDOPI7o2PKvHbJLK74jwGbBpgO8+mcfs5D+B/VU1kLl2ahOskQZpCSychBmpE6yRIGEITk0hBkslQhAKAnISq0hFkJUgEJUvmmVJbqrXC8AxHEmGaCHLFykkeGt+eqi0FDPX1Ihp2kuJ7ztwweJK3laTRUHY0jzFkZlZYbWGn4fihGWemXn4fgpdKnF4GSZblkbC/wDMLWTYrQ8IY"
+    }
+  ],
+  "Review": [
+    {
+      "id": "8d86",
+      "name": "saloni",
+      "feedback": "lfmkmfcmekmq",
+      "star": 5,
+      "productId": "3"
+    },
+    {
+      "id": "15f3",
+      "name": "sam",
+      "feedback": "lfmkmf",
+      "star": 4,
+      "productId": "3"
+    },
+    {
+      "id": "68e0",
+      "name": "sam",
+      "feedback": "dsa",
+      "star": 4,
+      "productId": "3"
+    },
+    {
+      "id": "ff90",
+      "name": "dhjajbac",
+      "feedback": "jnacjjcjanj",
+      "star": 4,
+      "productId": "1"
+    },
+    {
+      "id": "440c",
+      "name": "dhja",
+      "feedback": "jn",
+      "star": 5,
+      "productId": "1"
+    },
+    {
+      "id": "a50f",
+      "name": "saloni",
+      "feedback": "cdc",
+      "star": 4,
+      "productId": "1"
+    },
+    {
+      "id": "2ab5",
+      "name": "saloni",
+      "feedback": "dad",
+      "star": 4,
+      "productId": "1"
+    },
+    {
+      "id": "fa16",
+      "name": "saloni",
+      "feedback": "dad",
+      "star": 3,
+      "productId": "1"
+    },
+    {
+      "id": "e6d0",
+      "name": "saloni",
+      "feedback": "dscd",
+      "star": 4,
+      "productId": "3"
+    },
+    {
+      "id": "7bbe",
+      "name": "kavay",
+      "feedback": "helloooo",
+      "star": 5,
+      "productId": "3"
     }
   ]
 }
