@@ -6,7 +6,7 @@ import {
 import { IoIosStar, IoIosStarOutline } from "react-icons/io";
 import { toast } from 'react-toastify';
 import Review from './Review';
-import ShowReview from './showReview';
+import ShowReview from './ShowReview';
 
 function SingleProduct() {
     let Prodata = useParams();
@@ -74,6 +74,7 @@ function SingleProduct() {
 
                 </Col>
                 <Col>
+
                     <ShowReview ProductId={Prodata.ProductId} />
 
                 </Col>

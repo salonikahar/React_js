@@ -43,7 +43,7 @@ function ShowReview(pro) {
           Total Reviews: <span style={{ color: "#0d6efd" }}>{totalReviews}</span>
         </p>
 
-        <div className="vr" /> {/* Bootstrap vertical divider */}
+        <div className="vr" />
 
         <p className="mb-0">
           Average Rating:{" "}
@@ -53,7 +53,7 @@ function ShowReview(pro) {
 
 
       <Row className="g-4">
-        
+
         {review.map((v, i) => (
           <Col key={i} md={6} lg={4}>
             <Card style={{ boxShadow: "0 4px 8px rgba(0,0,0,0.1)" }}>
