@@ -7,7 +7,7 @@ import UpdatePro from './components/UpdatePro';
 import SingleProduct from './components/SingleProduct';
 import Review from './components/Review';
 import Product from './components/Product';
-import ShowReview from './components/showReview';
+import ShowReview from './components/ShowReview';
 
 
 function App() {
