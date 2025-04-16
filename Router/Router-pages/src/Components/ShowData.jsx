@@ -37,11 +37,7 @@ function ShowData() {
           onChange={(e) => setSearch(e.target.value.toLowerCase())}
           placeholder="Search by Name"
         />
-        <select name="sortingData" onChange={sortingByName}>
-          <option value="">Select Sort</option>
-          <option value="asc">Ascending</option>
-          <option value="dsc">Descending</option>
-        </select>
+         
       </div>
 
       {/* Display Table */}

@@ -54,40 +54,6 @@ function ViewEmp() {
       </Table>
     </Container>
 
-    // <div>
-    //   <h1>Employee Data</h1>
-    //   <table border="">
-    //     <tr>
-    //       <td>name</td>
-    //       <td>Email</td>
-    //       <td>Password</td>
-    //       <td>age</td>
-    //       <td>Gender</td>
-    //       <td>Hobby</td>
-    //       <td>Department</td>
-    //       <td>Actions</td>
-    //     </tr>
-    //     {emp.map((v, i) => {
-    //       return (
-    //         <tr>
-    //           <td>{v.name}</td>
-    //           <td>{v.email}</td>
-    //           <td>{v.password}</td>
-    //           <td>{v.age}</td>
-    //           <td>{v.gender}</td>
-    //           <td>{v.hobby}</td>
-    //           <td>{v.department}</td>
-    //           <td>
-    //             <button onClick={() => deleteEmp(i)}>Delete</button>
-    //             <button>
-    //               <Link to={"/edit/" + i}> Update</Link>
-    //             </button>
-    //           </td>
-    //         </tr>
-    //       )
-    //     })}
-    //   </table>
-    // </div>
   )
 }
 
