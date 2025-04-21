@@ -4,8 +4,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function AddData() {
+  
+
   let [form, setForm] = useState({});
-  let [errors, setErrors] = useState({});
 
   let getInput = (e) => {
     let { name, value, type, checked } = e.target;
@@ -13,26 +14,15 @@ function AddData() {
     setForm((prev) => ({ ...prev, [name]: inputValue }));
   };
 
-  let validate = () => {
-    let errs = {};
-    if (!form.name || form.name.length < 3) errs.name = 'Name must be at least 3 characters';
-    if (!form.email || !/\S+@\S+\.\S+/.test(form.email)) errs.email = 'Invalid email';
-    if (!form.phone || !/^\d+$/.test(form.phone)) errs.phone = 'Phone must be numeric';
-    if (!form.image || !form.image.startsWith('http')) errs.image = 'Image must be a valid URL';
-    return errs;
-  };
-
   let handleSubmit = async (e) => {
     e.preventDefault();
-    let errs = validate();
-    setErrors(errs);
-    if (Object.keys(errs).length > 0) return;
 
     try {
       await axios.post('http://localhost:3000/users', form);
       toast.success('User added successfully!');
-      setForm({});
+      setForm(initialFormState);
     } catch (error) {
+      console.error('Error adding user:', error);
       toast.error('Failed to add user');
     }
   };
@@ -43,15 +33,26 @@ function AddData() {
       <form onSubmit={handleSubmit}>
         {['name', 'email', 'phone', 'image'].map((v) => (
           <div className="mb-3" key={v}>
+            <label className="form-label" htmlFor={v}>{v.toUpperCase()}</label>
             <input
-              type="text"
+              type={
+                v === 'email' ? 'email' :
+                v === 'phone' ? 'tel' :
+                v === 'image' ? 'url' : 'text'
+              }
+              id={v}
               name={v}
-              className={`form-control ${errors[v] ? 'is-invalid' : ''}`}
+              className="form-control"
               placeholder={v.toUpperCase()}
-              value={form[v] || ''}
+              value={form[v]}
               onChange={getInput}
+              required
+              minLength={v === 'name' ? 3 : undefined}
+              pattern={
+                v === 'phone' ? '\\d+' :
+                v === 'image' ? 'https?://.+' : undefined
+              }
             />
-            {errors[v] && <div className="invalid-feedback">{errors[v]}</div>}
           </div>
         ))}
 
@@ -60,13 +61,14 @@ function AddData() {
             className="form-check-input"
             type="checkbox"
             name="status"
-            checked={form.status || false}
+            checked={form.status}
             onChange={getInput}
+            id="status"
           />
-          <label className="form-check-label">Status</label>
+          <label className="form-check-label" htmlFor="status">Status</label>
         </div>
 
-        <button className="btn btn-success">Add</button>
+        <button type="submit" className="btn btn-success">Add</button>
       </form>
       <ToastContainer />
     </div>
