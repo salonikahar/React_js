@@ -4,17 +4,17 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function AddData() {
-  const [form, setForm] = useState({});
-  const [errors, setErrors] = useState({});
+  let [form, setForm] = useState({});
+  let [errors, setErrors] = useState({});
 
-  const getInput = (e) => {
-    const { name, value, type, checked } = e.target;
-    const inputValue = type === 'checkbox' ? checked : value;
+  let getInput = (e) => {
+    let { name, value, type, checked } = e.target;
+    let inputValue = type === 'checkbox' ? checked : value;
     setForm((prev) => ({ ...prev, [name]: inputValue }));
   };
 
-  const validate = () => {
-    const errs = {};
+  let validate = () => {
+    let errs = {};
     if (!form.name || form.name.length < 3) errs.name = 'Name must be at least 3 characters';
     if (!form.email || !/\S+@\S+\.\S+/.test(form.email)) errs.email = 'Invalid email';
     if (!form.phone || !/^\d+$/.test(form.phone)) errs.phone = 'Phone must be numeric';
@@ -22,9 +22,9 @@ function AddData() {
     return errs;
   };
 
-  const handleSubmit = async (e) => {
+  let handleSubmit = async (e) => {
     e.preventDefault();
-    const errs = validate();
+    let errs = validate();
     setErrors(errs);
     if (Object.keys(errs).length > 0) return;
 
@@ -41,17 +41,17 @@ function AddData() {
     <div className="container mt-4">
       <h2>Add User</h2>
       <form onSubmit={handleSubmit}>
-        {['name', 'email', 'phone', 'image'].map((field) => (
-          <div className="mb-3" key={field}>
+        {['name', 'email', 'phone', 'image'].map((v) => (
+          <div className="mb-3" key={v}>
             <input
               type="text"
-              name={field}
-              className={`form-control ${errors[field] ? 'is-invalid' : ''}`}
-              placeholder={field.toUpperCase()}
-              value={form[field] || ''}
+              name={v}
+              className={`form-control ${errors[v] ? 'is-invalid' : ''}`}
+              placeholder={v.toUpperCase()}
+              value={form[v] || ''}
               onChange={getInput}
             />
-            {errors[field] && <div className="invalid-feedback">{errors[field]}</div>}
+            {errors[v] && <div className="invalid-feedback">{errors[v]}</div>}
           </div>
         ))}
 
